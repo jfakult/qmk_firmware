@@ -24,3 +24,6 @@ SRC += dyn_serial.c factory.c
 DEFAULT_FOLDER = framework/ansi
 
 OPT_DEFS += -DCORTEX_ENABLE_WFI_IDLE=TRUE
+
+RGB_MATRIX_ENABLE = yes
+
