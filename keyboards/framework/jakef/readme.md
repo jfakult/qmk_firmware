@@ -12,3 +12,11 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+# To clean up all other keyboard files
+cd keyboards
+ls . | grep -v framework | xargs rm -rf
+
+# Enable custom animations: config.h and jakef/rules.mk
+# Custom animation location: rgb_matrix_kb.inc
