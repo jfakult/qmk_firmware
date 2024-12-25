@@ -20,3 +20,10 @@ ls . | grep -v framework | xargs rm -rf
 
 # Enable custom animations: config.h and jakef/rules.mk
 # Custom animation location: rgb_matrix_kb.inc
+
+
+# To Build:
+No need to include the .inc file from anywhere.
+If RGB_MATRIX_CUSTOM_KB = yes (rules.mk) it will be imported from quantum/rgb_matrix/rgb_matrix.c
+
+On Framework Laptop 16 Keyboard: Hold down left ALT and right ALT while installing the module

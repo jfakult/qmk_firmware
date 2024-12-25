@@ -4,9 +4,9 @@
 #include QMK_KEYBOARD_H
 #include "framework.h"
 
-#ifdef RGB_MATRIX_CUSTOM_KB
-#     include "rgb_matrix_kb.inc"
-#endif
+// #ifdef RGB_MATRIX_CUSTOM_KB
+//#     include "rgb_matrix_kb.inc"
+// #endif
 
 enum _layers {
   _BASE,
