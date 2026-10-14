@@ -1,7 +1,7 @@
 # Custom RGB animations (Framework Laptop 16 ANSI)
 
 All effects live in `keyboards/framework/rgb_matrix_kb.inc` and are only compiled when
-`RGB_MATRIX_JAKE_CUSTOM_EFFECTS` is defined (and `RGB_MATRIX_CUSTOM_KB = yes` in `jakef/rules.mk`).
+`RGB_MATRIX_JAKE_CUSTOM_EFFECTS` is defined (in `keyboards/framework/config.h`, and `RGB_MATRIX_CUSTOM_KB = yes` in `jakef/rules.mk`).
 Each effect needs an `RGB_MATRIX_EFFECT(name)` line near the top of the file. Cycle through them with the normal RGB effect keys.
 
 ## "Highlighted" keys
