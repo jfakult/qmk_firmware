@@ -14,6 +14,25 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+# Jake's customizations (summary)
+
+Fork of FrameworkComputer/qmk_firmware (Framework Laptop 16 keyboard). Branches:
+- `jakes_animations`: original custom branch (based on fl16 v0.2.9).
+- `jakes_animations_2026`: same + merge of `fw/fl16-2026-f9` (Framework v0.3.1, Feb 2026). Current.
+
+Remotes: `origin` = jfakult/qmk_firmware, `fw` = FrameworkComputer/qmk_firmware (to update: `git fetch fw && git merge fw/<branch>`).
+
+Changed files / folders:
+- `keyboards/framework/rgb_matrix_kb.inc`: custom RGB effects. `RAINBOW_MOVING_CHEVRON_jake` is the chevron rainbow
+  that shifts hue by +48 on the keys FWA_F2, F3, F7, F8, K5, K6, KU, KH (the dvorak/home-row hint keys).
+  `my_cool_effect*` are older experiments. New effects need an `RGB_MATRIX_EFFECT(name)` line at the top.
+- `keyboards/framework/jakef/`: my keymap-independent config (`config.h`, `rules.mk` enabling `RGB_MATRIX_CUSTOM_KB`),
+  `animations/dvorak_clear_keycap_hints.[ch]`, and this readme.
+- `keyboards/framework/ansi/keymaps/default/keymap.c`: trivial comment change.
+- `lib/python/qmk/math.py`: `ast.Num` -> `ast.Constant` so the old QMK CLI lib runs on Python 3.12+ (was failing on 3.14).
+- `util/uf2conv.py`: raw-string regex fix.
+- Other keyboards under `keyboards/` were deleted on this branch to keep it small.
+
 # To clean up all other keyboard files
 
 ```
