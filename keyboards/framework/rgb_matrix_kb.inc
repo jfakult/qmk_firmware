@@ -16,6 +16,7 @@
 
 
 RGB_MATRIX_EFFECT(my_cool_effect)
+RGB_MATRIX_EFFECT(RAINBOW_MOVING_CHEVRON_jake)
 RGB_MATRIX_EFFECT(my_cool_effect1_5)
 RGB_MATRIX_EFFECT(my_cool_effect2)
 // https://www.reddit.com/r/olkb/comments/hxtuf7/custom_qmk_effect_i_made_3_led_effects_that_cycle/
@@ -40,40 +41,6 @@ static bool my_cool_effect(effect_params_t *params) {
     uint8_t r = (g_led_config.point[i].x + g_led_config.point[i].y) / 2;
     uint8_t g = (g_led_config.point[i].x + g_led_config.point[i].y) / 2;
     uint8_t b = (g_led_config.point[i].x + g_led_config.point[i].y) / 2;
-
-    r = 0;
-    g = 0;
-    b = 0;
-    
-    int num_leds = led_max - led_min;
-    int index = i - led_min;
-    if (index < num_leds / 3)
-    {
-      
-      r = map(index, 0, num_leds / 3, 0, 0xff);
-    }
-    else if (index >= num_leds / 3 && i < (num_leds * 2) / 3)
-    {
-      g = map(index, num_leds / 3, (num_leds * 2) / 3, 0, 0xff);
-    }
-    else if (index >= (num_leds * 2) / 3)
-    {
-      b = map(index, (num_leds * 2) / 3, num_leds, 0, 0xff); 
-    }
-    else
-    {
-      r = (index * 0xff) / num_leds;
-      g = (index * 0xff) / num_leds;
-      b = (index * 0xff) / num_leds;
-    }
-
-    b = 0;
-    r = 0;
-    g = 10;
-
-    //uint8_t x = g_led_config.point[i].x;
-    //uint8_t y = g_led_config.point[i].y;
-    // Grab label from g_led_config.point
     
     if (i == FWA_F2 ||
         i == FWA_F3 ||
@@ -93,6 +60,28 @@ static bool my_cool_effect(effect_params_t *params) {
     rgb_matrix_set_color(i, r, g, b);
   }
   return rgb_matrix_check_finished_leds(led_max);
+}
+
+static HSV RAINBOW_MOVING_CHEVRON_jake_math(HSV hsv, uint8_t i, uint8_t time) {
+  // If i matches one of the FWA keys, shift the hue by some degrees
+    if (i == FWA_F2 ||
+        i == FWA_F3 ||
+        i == FWA_F7 ||
+        i == FWA_F8 ||
+        i == FWA_K5 ||
+        i == FWA_K6 ||
+        i == FWA_KU ||
+        i == FWA_KH
+    )
+    {
+      hsv.h += 48;
+    }
+    hsv.h += abs8(g_led_config.point[i].y - k_rgb_matrix_center.y) + (g_led_config.point[i].x - time);
+    return hsv;
+}
+
+bool RAINBOW_MOVING_CHEVRON_jake(effect_params_t* params) {
+    return effect_runner_i(params, &RAINBOW_MOVING_CHEVRON_jake_math);
 }
 
 static HSV my_cool_effect1_5_math(HSV hsv, int8_t sin, int8_t cos, uint8_t i, uint8_t time) {
