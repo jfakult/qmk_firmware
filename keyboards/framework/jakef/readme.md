@@ -26,6 +26,7 @@ Changed files / folders:
 - `keyboards/framework/rgb_matrix_kb.inc`: custom RGB effects. `RAINBOW_MOVING_CHEVRON_jake` is the chevron rainbow
   that shifts hue by +48 on the keys FWA_F2, F3, F7, F8, K5, K6, KU, KH (the dvorak/home-row hint keys).
   `my_cool_effect*` are older experiments. New effects need an `RGB_MATRIX_EFFECT(name)` line at the top.
+- `keyboards/framework/jakef/animations.md`: per-effect documentation of all custom animations.
 - `keyboards/framework/jakef/`: my keymap-independent config (`config.h`, `rules.mk` enabling `RGB_MATRIX_CUSTOM_KB`),
   `animations/dvorak_clear_keycap_hints.[ch]`, and this readme.
 - `keyboards/framework/ansi/keymaps/default/keymap.c`: trivial comment change.
